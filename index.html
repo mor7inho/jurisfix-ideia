@@ -1,0 +1,2981 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurisfix - Direito Administrativo com Casos Concretos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* RESET E BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* UTILIDADES */
+        .hidden {
+            display: none !important;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 32px;
+            color: #4CAF50;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 13px;
+            color: #bdc3c7;
+        }
+
+        /* BOTÕES */
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2980b9 0%, #1f639b 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #2c3e50;
+            border: 1px solid #bdc3c7;
+        }
+
+        .btn-secondary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60 0%, #219653 100%);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #219653 0%, #1e874b 100%);
+            transform: translateY(-2px);
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 13px;
+        }
+
+        /* SEARCH BAR */
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 45px 12px 20px;
+            border: none;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.5);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-button {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* MAIN CONTENT */
+        main {
+            margin-top: 70px;
+            min-height: calc(100vh - 70px);
+            padding-top: 30px;
+        }
+
+        /* WELCOME PAGE */
+        .welcome-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+        }
+
+        .welcome-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .welcome-hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 0 20px 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid #e8e8e8;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 50px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        /* DASHBOARD */
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.3s ease;
+            border-left: 5px solid;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card-1 { border-left-color: #3498db; }
+        .stat-card-2 { border-left-color: #2ecc71; }
+        .stat-card-3 { border-left-color: #e74c3c; }
+        .stat-card-4 { border-left-color: #f39c12; }
+
+        .stat-card i {
+            font-size: 36px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+        }
+
+        .stat-card-1 i { background: #3498db; }
+        .stat-card-2 i { background: #2ecc71; }
+        .stat-card-3 i { background: #e74c3c; }
+        .stat-card-4 i { background: #f39c12; }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2c3e50;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+
+        .filters-panel {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+
+        .filters-panel h3 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+        }
+
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+
+        .filter-select, .filter-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .filter-select:focus, .filter-input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .saved-filters {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .saved-filters h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .saved-filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .saved-filter-tag {
+            background: #f1f8ff;
+            border: 1px solid #d1e6ff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .saved-filter-tag:hover {
+            background: #e3f2fd;
+            transform: translateY(-2px);
+        }
+
+        .saved-filter-tag.active {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+
+        .filter-study-btn {
+            margin-left: 5px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: inherit;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .case-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+            color: white;
+            padding: 25px;
+            position: relative;
+        }
+
+        .case-code {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .case-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .case-materia {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .case-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case-topic {
+            color: #3498db;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .case-context {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .case-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .case-status {
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-in-progress {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-not-started {
+            background: #f8f9fa;
+            color: #6c757d;
+            border: 1px solid #dee2e6;
+        }
+
+        .case-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* CASE DETAIL */
+        .case-detail-container {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+            margin-bottom: 40px;
+        }
+
+        .case-detail-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+            color: white;
+            padding: 40px;
+        }
+
+        .case-detail-header h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .case-detail-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 14px;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .case-detail-content {
+            padding: 40px;
+        }
+
+        .case-section {
+            margin-bottom: 35px;
+            padding: 25px;
+            border-radius: 12px;
+            background: #f8f9fa;
+            border-left: 5px solid #3498db;
+        }
+
+        .case-section h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+        }
+
+        .case-section h3 i {
+            color: #3498db;
+        }
+
+        .case-section-content {
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .case-section-content ul, .case-section-content ol {
+            padding-left: 25px;
+            margin: 15px 0;
+        }
+
+        .case-section-content li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        /* RATING SECTION (CASOS) */
+        .rating-section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e8e8e8;
+        }
+
+        .rating-section h3 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+        }
+
+        .case-rating-stats {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .rating-overall {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .rating-percentage {
+            font-size: 48px;
+            font-weight: 800;
+            color: #2c3e50;
+        }
+
+        .rating-label {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .rating-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .rating-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .rating-btn-good {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .rating-btn-good:hover, .rating-btn-good.active {
+            background: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        .rating-btn-bad {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        .rating-btn-bad:hover, .rating-btn-bad.active {
+            background: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        .rating-count {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* COMMENTS SECTION */
+        .comments-collapsible {
+            background: white;
+            border-radius: 12px;
+            margin-top: 30px;
+            overflow: hidden;
+            border: 1px solid #e8e8e8;
+        }
+
+        .comments-header {
+            background: #f8f9fa;
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .comments-header h3 {
+            color: #2c3e50;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+        }
+
+        .comments-toggle {
+            transition: transform 0.3s ease;
+        }
+
+        .comments-toggle.rotated {
+            transform: rotate(180deg);
+        }
+
+        .comments-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .comments-content.expanded {
+            max-height: 2000px;
+        }
+
+        .comment-form {
+            padding: 25px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 100px;
+            margin-bottom: 15px;
+        }
+
+        .comment-input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .comments-list {
+            padding: 0 25px 25px;
+        }
+
+        .comment {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .comment-author {
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .comment-date {
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+
+        .comment-content {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .comment-rating {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .comment-rating-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .comment-rating-btn {
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .comment-rating-btn-good:hover, .comment-rating-btn-good.active {
+            background: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+        }
+
+        .comment-rating-btn-bad:hover, .comment-rating-btn-bad.active {
+            background: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
+        }
+
+        .comment-rating-count {
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+
+        .comments-pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .pagination-btn {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pagination-btn:hover {
+            background: #f8f9fa;
+            border-color: #3498db;
+        }
+
+        .pagination-btn.active {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* PROGRESS SECTION */
+        .progress-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+
+        .progress-section h3 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .materia-progress {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .materia-progress:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .materia-progress.selected {
+            background: #e3f2fd;
+            border-left-width: 6px;
+        }
+
+        .materia-progress-1 { border-left-color: #3498db; }
+        .materia-progress-2 { border-left-color: #2ecc71; }
+        .materia-progress-3 { border-left-color: #e74c3c; }
+        .materia-progress-4 { border-left-color: #f39c12; }
+        .materia-progress-5 { border-left-color: #9b59b6; }
+        .materia-progress-6 { border-left-color: #1abc9c; }
+        .materia-progress-7 { border-left-color: #34495e; }
+
+        .materia-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .materia-name {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .materia-count {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: #ecf0f1;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border-radius: 6px;
+            transition: width 0.8s ease;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #7f8c8d;
+        }
+
+        /* STUDY MODE */
+        .study-mode-info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 4px solid #3498db;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .study-mode-info h4 {
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        /* LOADING */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            backdrop-filter: blur(5px);
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 25px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-message {
+            margin-top: 15px;
+            color: #2c3e50;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #27ae60;
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+            max-width: 400px;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast.error {
+            background: #e74c3c;
+        }
+
+        .toast.warning {
+            background: #f39c12;
+        }
+
+        .toast.info {
+            background: #3498db;
+        }
+
+        /* USER INFO */
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .user-details {
+            font-size: 14px;
+        }
+
+        .user-name {
+            font-weight: 700;
+            color: white;
+            font-size: 16px;
+        }
+
+        .user-progress {
+            font-size: 12px;
+            color: #bdc3c7;
+        }
+
+        /* EMPTY STATE */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: #7f8c8d;
+            grid-column: 1 / -1;
+        }
+
+        .empty-state i {
+            font-size: 70px;
+            margin-bottom: 25px;
+            opacity: 0.2;
+        }
+
+        .empty-state h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        /* TAGS */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.2);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+        }
+
+        /* CASE NAVIGATION */
+        .case-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #ecf0f1;
+        }
+
+        .nav-info {
+            font-size: 16px;
+            color: #2c3e50;
+            font-weight: 600;
+            text-align: center;
+            flex: 1;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .search-container {
+                order: 3;
+                width: 100%;
+                max-width: 100%;
+                margin: 15px 0 0;
+            }
+
+            .user-info {
+                order: 2;
+            }
+
+            main {
+                margin-top: 140px;
+            }
+
+            .welcome-hero h1 {
+                font-size: 32px;
+            }
+
+            .welcome-hero p {
+                font-size: 16px;
+            }
+
+            .dashboard-stats, .progress-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-group, .filter-actions {
+                width: 100%;
+            }
+
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-navigation {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .case-navigation .btn {
+                width: 100%;
+            }
+
+            .case-detail-content {
+                padding: 20px;
+            }
+
+            .case-section {
+                padding: 20px;
+            }
+
+            .case-rating-stats {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .rating-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .rating-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" onclick="showWelcomePage()">
+                    <i class="fas fa-gavel"></i>
+                    <div class="logo-text">
+                        <h1>Jurisfix</h1>
+                        <p>Estude Direito com Casos Concretos</p>
+                    </div>
+                </div>
+                
+                <!-- SEARCH BAR -->
+                <div class="search-container">
+                    <input type="text" class="search-input" id="global-search" placeholder="Buscar por matéria, tópico, código...">
+                    <button class="search-button" onclick="performSearch()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div id="auth-buttons" class="hidden">
+                    <button class="btn btn-secondary" onclick="showLoginPage()">
+                        <i class="fas fa-sign-in-alt"></i> Entrar
+                    </button>
+                    <button class="btn btn-primary" onclick="mockRegister()">
+                        <i class="fas fa-user-plus"></i> Cadastrar
+                    </button>
+                </div>
+                
+                <div id="user-info" class="user-info hidden">
+                    <div class="user-avatar" id="user-avatar">E</div>
+                    <div class="user-details">
+                        <div class="user-name" id="user-name">Estudante</div>
+                        <div class="user-progress">Progresso: <span id="header-progress">0%</span></div>
+                    </div>
+                    <button class="btn btn-sm btn-secondary" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- PÁGINA DE BOAS-VINDAS -->
+        <div id="welcome-page" class="hidden">
+            <div class="welcome-hero">
+                <h1>Jurisfix</h1>
+                <p>Estude Direito através de Casos Concretos - Administrativo, Constitucional, Penal e muito mais!</p>
+                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
+                    <button class="btn btn-primary" onclick="startStudy()" style="padding: 15px 30px; font-size: 16px;">
+                        <i class="fas fa-play-circle"></i> Iniciar Estudos
+                    </button>
+                    <button class="btn btn-success" onclick="showLoginPage()" style="padding: 15px 30px; font-size: 16px;">
+                        <i class="fas fa-user-graduate"></i> Meu Progresso
+                    </button>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h3>Multi-Matérias</h3>
+                        <p>Estude Administrativo, Constitucional, Penal, Civil, Tributário e muito mais</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Progresso Detalhado</h3>
+                        <p>Acompanhe seu progresso por matéria e geral com estatísticas avançadas</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <h3>Filtros Salvos</h3>
+                        <p>Salve filtros personalizados e estude exatamente o que precisa</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Comunidade</h3>
+                        <p>Comente, avalie e veja as melhores histórias recomendadas por outros</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOADING -->
+        <div id="loading" class="loading-overlay">
+            <div class="spinner"></div>
+            <div class="loading-message" id="loading-message">Carregando casos...</div>
+        </div>
+
+        <!-- DASHBOARD -->
+        <div id="dashboard" class="hidden">
+            <div class="container">
+                <!-- ESTATÍSTICAS -->
+                <div class="dashboard-stats">
+                    <div class="stat-card stat-card-1">
+                        <i class="fas fa-book"></i>
+                        <div>
+                            <div class="stat-number" id="total-cases">0</div>
+                            <div class="stat-label">Total de Casos</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card stat-card-2">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <div class="stat-number" id="completed-cases">0</div>
+                            <div class="stat-label">Concluídos</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card stat-card-3">
+                        <i class="fas fa-star"></i>
+                        <div>
+                            <div class="stat-number" id="avg-rating">0.0</div>
+                            <div class="stat-label">Avaliação Média</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card stat-card-4">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <div class="stat-number" id="study-time">0h</div>
+                            <div class="stat-label">Tempo de Estudo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODO DE ESTUDO -->
+                <div id="study-mode-info" class="study-mode-info hidden">
+                    <div>
+                        <h4><i class="fas fa-graduation-cap"></i> Modo de Estudo Ativo</h4>
+                        <p>Você está estudando um bloco salvo. O progresso será calculado apenas para os casos deste filtro.</p>
+                    </div>
+                    <button class="btn btn-secondary" onclick="exitStudyMode()">
+                        <i class="fas fa-times"></i> Sair do Modo
+                    </button>
+                </div>
+
+                <!-- PROGRESSO POR MATÉRIA (FILTRADO) -->
+                <div class="progress-section">
+                    <h3><i class="fas fa-chart-bar"></i> Progresso nos Filtros Ativos</h3>
+                    <div class="progress-grid" id="materia-progress">
+                        <!-- Progresso filtrado será carregado aqui -->
+                    </div>
+                </div>
+
+                <!-- FILTROS -->
+                <div class="filters-panel">
+                    <h3><i class="fas fa-filter"></i> Filtrar Casos</h3>
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label class="filter-label">Matéria</label>
+                            <select id="materia-filter" class="filter-select" onchange="updateTopicsByMateria()">
+                                <option value="all">Todas as matérias</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="filter-label">Tópico</label>
+                            <select id="topic-filter" class="filter-select">
+                                <option value="all">Todos os tópicos</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="filter-label">Status</label>
+                            <select id="status-filter" class="filter-select">
+                                <option value="all">Todos status</option>
+                                <option value="not_started">Não iniciados</option>
+                                <option value="in_progress">Em progresso</option>
+                                <option value="completed">Concluídos</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="filter-label">Ordenar por</label>
+                            <select id="sort-filter" class="filter-select">
+                                <option value="default">Padrão</option>
+                                <option value="rating">Melhor avaliados</option>
+                                <option value="difficulty">Dificuldade</option>
+                                <option value="recent">Mais recentes</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-actions">
+                            <button class="btn btn-primary" onclick="applyFilters()">
+                                <i class="fas fa-check"></i> Aplicar
+                            </button>
+                            <button class="btn btn-secondary" onclick="resetFilters()">
+                                <i class="fas fa-redo"></i> Limpar
+                            </button>
+                            <button class="btn btn-success" onclick="saveCurrentFilter()">
+                                <i class="fas fa-save"></i> Salvar Filtro
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- FILTROS SALVOS COM MODO DE ESTUDO -->
+                    <div class="saved-filters" id="saved-filters-section">
+                        <h4><i class="fas fa-bookmark"></i> Filtros Salvos (Blocos de Estudo)</h4>
+                        <div class="saved-filter-tags" id="saved-filter-tags">
+                            <!-- Filtros salvos serão carregados aqui -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CASOS -->
+                <h3 style="margin-bottom: 20px; color: #2c3e50; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-gavel"></i> Casos para Estudo 
+                    <span id="cases-count" style="background: #3498db; color: white; padding: 5px 15px; border-radius: 20px; font-size: 14px; margin-left: 10px;">0</span>
+                </h3>
+
+                <div id="cases-grid" class="cases-grid">
+                    <!-- Casos serão carregados aqui -->
+                </div>
+            </div>
+        </div>
+
+        <!-- DETALHE DO CASO -->
+        <div id="case-detail" class="hidden">
+            <div class="container">
+                <div id="case-detail-content">
+                    <!-- Conteúdo do caso será carregado aqui -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- TOAST -->
+    <div class="toast hidden" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Ação realizada!</span>
+    </div>
+
+    <script>
+        // ESTADO DA APLICAÇÃO
+        let casesData = [];
+        let currentUser = null;
+        let userProgress = {};
+        let userComments = {};
+        let userRatings = {};
+        let savedFilters = [];
+        let currentCaseId = null;
+        let activeStudyFilter = null; // Filtro ativo no modo de estudo
+        let selectedMateriasForProgress = []; // Matérias selecionadas para progresso
+        
+        // Estado da paginação de comentários
+        let commentsExpanded = false;
+        let currentCommentsPage = 1;
+        const COMMENTS_PER_PAGE = 5;
+        
+        let currentFilters = {
+            materia: 'all',
+            topic: 'all',
+            status: 'all',
+            sort: 'default',
+            search: ''
+        };
+
+        // STORAGE KEYS
+        const STORAGE_KEYS = {
+            PROGRESS: 'Jurisfix_progress',
+            COMMENTS: 'Jurisfix_comments',
+            RATINGS: 'Jurisfix_ratings',
+            FILTERS: 'Jurisfix_filters',
+            USER: 'Jurisfix_user',
+            STUDY_FILTER: 'Jurisfix_study_filter',
+            SELECTED_MATERIAS: 'Jurisfix_selected_materias'
+        };
+
+        // MATÉRIAS DO DIREITO
+        const materiasDireito = [
+            { id: 'administrativo', name: 'Direito Administrativo', color: '#3498db' },
+            { id: 'constitucional', name: 'Direito Constitucional', color: '#2ecc71' },
+            { id: 'penal', name: 'Direito Penal', color: '#e74c3c' },
+            { id: 'civil', name: 'Direito Civil', color: '#9b59b6' },
+            { id: 'tributario', name: 'Direito Tributário', color: '#f39c12' },
+            { id: 'trabalho', name: 'Direito do Trabalho', color: '#1abc9c' },
+            { id: 'processual', name: 'Direito Processual', color: '#34495e' }
+        ];
+
+        // FUNÇÕES DE DADOS
+        async function loadCasesData() {
+            showLoading('Carregando casos...');
+            
+            try {
+                const response = await fetch('deepseek_material_base1.json');
+                if (!response.ok) {
+                    throw new Error(`Erro ao carregar JSON: ${response.status}`);
+                }
+                
+                const jsonData = await response.json();
+                casesData = jsonData.cases || [];
+                
+                // Adicionar IDs sequenciais se não existirem
+                casesData.forEach((caseItem, index) => {
+                    caseItem.id = caseItem.id || index + 1;
+                    caseItem.materia = caseItem.materia || 'administrativo';
+                    
+                    // Adicionar avaliação simples se não existir
+                    if (!caseItem.rating) {
+                        caseItem.rating = {
+                            good: Math.floor(Math.random() * 50) + 20,
+                            bad: Math.floor(Math.random() * 10) + 1,
+                            userRating: null
+                        };
+                    }
+                    
+                    // Extrair matéria do tópico se não tiver definida
+                    if (!caseItem.materia) {
+                        if (caseItem.topic && caseItem.topic.includes('Direito')) {
+                            if (caseItem.topic.includes('Administrativo')) caseItem.materia = 'administrativo';
+                            else if (caseItem.topic.includes('Constitucional')) caseItem.materia = 'constitucional';
+                            else if (caseItem.topic.includes('Penal')) caseItem.materia = 'penal';
+                            else if (caseItem.topic.includes('Civil')) caseItem.materia = 'civil';
+                            else if (caseItem.topic.includes('Tributário')) caseItem.materia = 'tributario';
+                            else if (caseItem.topic.includes('Trabalho')) caseItem.materia = 'trabalho';
+                            else if (caseItem.topic.includes('Processual')) caseItem.materia = 'processual';
+                        }
+                    }
+                    
+                    // Adicionar nome da matéria
+                    const materiaObj = materiasDireito.find(m => m.id === caseItem.materia);
+                    caseItem.materiaName = materiaObj ? materiaObj.name : 'Direito Administrativo';
+                });
+                
+                console.log('Casos carregados:', casesData.length);
+                console.log('Exemplo do primeiro caso:', casesData[0]);
+                
+                hideLoading();
+                return true;
+            } catch (error) {
+                console.error('Erro ao carregar casos:', error);
+                showToast('Erro ao carregar os casos. Verifique se o arquivo JSON está na mesma pasta.', 'error');
+                hideLoading();
+                return false;
+            }
+        }
+
+        function loadUserData() {
+            // Progresso
+            const savedProgress = localStorage.getItem(STORAGE_KEYS.PROGRESS);
+            userProgress = savedProgress ? JSON.parse(savedProgress) : {};
+            
+            // Comentários
+            const savedComments = localStorage.getItem(STORAGE_KEYS.COMMENTS);
+            userComments = savedComments ? JSON.parse(savedComments) : {};
+            
+            // Avaliações
+            const savedRatings = localStorage.getItem(STORAGE_KEYS.RATINGS);
+            userRatings = savedRatings ? JSON.parse(savedRatings) : {};
+            
+            // Filtros salvos
+            const savedFiltersData = localStorage.getItem(STORAGE_KEYS.FILTERS);
+            savedFilters = savedFiltersData ? JSON.parse(savedFiltersData) : [
+                { id: 1, name: 'Não iniciados', filters: { status: 'not_started' } },
+                { id: 2, name: 'Melhores casos', filters: { sort: 'rating' } },
+                { id: 3, name: 'Direito Administrativo', filters: { materia: 'administrativo' } }
+            ];
+            
+            // Modo de estudo
+            const savedStudyFilter = localStorage.getItem(STORAGE_KEYS.STUDY_FILTER);
+            activeStudyFilter = savedStudyFilter ? JSON.parse(savedStudyFilter) : null;
+            
+            // Matérias selecionadas para progresso
+            const savedSelectedMaterias = localStorage.getItem(STORAGE_KEYS.SELECTED_MATERIAS);
+            selectedMateriasForProgress = savedSelectedMaterias ? JSON.parse(savedSelectedMaterias) : [];
+            
+            // Usuário
+            const savedUser = localStorage.getItem(STORAGE_KEYS.USER);
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+            }
+            
+            // Inicializar progresso para novos casos
+            casesData.forEach(caseItem => {
+                if (!userProgress[caseItem.id]) {
+                    userProgress[caseItem.id] = {
+                        status: 'not_started',
+                        lastViewed: null,
+                        completedAt: null,
+                        timeSpent: 0
+                    };
+                }
+            });
+        }
+
+        function saveUserData() {
+            localStorage.setItem(STORAGE_KEYS.PROGRESS, JSON.stringify(userProgress));
+            localStorage.setItem(STORAGE_KEYS.COMMENTS, JSON.stringify(userComments));
+            localStorage.setItem(STORAGE_KEYS.RATINGS, JSON.stringify(userRatings));
+            localStorage.setItem(STORAGE_KEYS.FILTERS, JSON.stringify(savedFilters));
+            localStorage.setItem(STORAGE_KEYS.STUDY_FILTER, JSON.stringify(activeStudyFilter));
+            localStorage.setItem(STORAGE_KEYS.SELECTED_MATERIAS, JSON.stringify(selectedMateriasForProgress));
+            
+            if (currentUser) {
+                localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(currentUser));
+            }
+        }
+
+        // 1. ATUALIZAR TÓPICOS POR MATÉRIA
+        function updateTopicsByMateria() {
+            const materiaFilter = document.getElementById('materia-filter');
+            const topicFilter = document.getElementById('topic-filter');
+            const selectedMateria = materiaFilter.value;
+            
+            // Limpar filtro de tópicos
+            topicFilter.innerHTML = '<option value="all">Todos os tópicos</option>';
+            
+            if (selectedMateria === 'all') {
+                // Mostrar todos os tópicos únicos
+                const allTopics = [...new Set(casesData.map(caseItem => caseItem.topic).filter(Boolean))];
+                allTopics.sort().forEach(topic => {
+                    const option = document.createElement('option');
+                    option.value = topic;
+                    option.textContent = topic;
+                    topicFilter.appendChild(option);
+                });
+            } else {
+                // Mostrar apenas tópicos da matéria selecionada
+                const materiasTopics = casesData
+                    .filter(caseItem => caseItem.materia === selectedMateria && caseItem.topic)
+                    .map(caseItem => caseItem.topic);
+                
+                const uniqueTopics = [...new Set(materiasTopics)];
+                uniqueTopics.sort().forEach(topic => {
+                    const option = document.createElement('option');
+                    option.value = topic;
+                    option.textContent = topic;
+                    topicFilter.appendChild(option);
+                });
+            }
+        }
+
+        // 2. PROGRESSO APENAS PARA MATÉRIAS SELECIONADAS
+        function toggleMateriaForProgress(materiaId) {
+            const index = selectedMateriasForProgress.indexOf(materiaId);
+            if (index === -1) {
+                selectedMateriasForProgress.push(materiaId);
+            } else {
+                selectedMateriasForProgress.splice(index, 1);
+            }
+            
+            saveUserData();
+            updateDashboardStats();
+            showToast('Matérias para progresso atualizadas!', 'success');
+        }
+
+        function updateDashboardStats() {
+            const progress = calculateProgress();
+            const filteredProgress = calculateFilteredProgress();
+            
+            // Atualizar estatísticas gerais OU do filtro ativo
+            if (activeStudyFilter) {
+                document.getElementById('total-cases').textContent = filteredProgress.total;
+                document.getElementById('completed-cases').textContent = filteredProgress.completed;
+            } else {
+                document.getElementById('total-cases').textContent = progress.total;
+                document.getElementById('completed-cases').textContent = progress.completed;
+            }
+            
+            document.getElementById('avg-rating').textContent = progress.avgRating;
+            document.getElementById('study-time').textContent = `${progress.hours}h`;
+            
+            // Atualizar header com progresso relevante
+            const headerProgress = activeStudyFilter ? filteredProgress.percentage : progress.percentage;
+            document.getElementById('header-progress').textContent = `${headerProgress}%`;
+            
+            // Atualizar progresso por matéria (filtrado)
+            const progressGrid = document.getElementById('materia-progress');
+            progressGrid.innerHTML = '';
+            
+            // Se estiver em modo de estudo, mostrar apenas matérias do filtro
+            if (activeStudyFilter) {
+                const filteredMaterias = getMateriasFromFilter(activeStudyFilter);
+                filteredMaterias.forEach(materiaId => {
+                    const materiaProgress = calculateMateriaProgress(materiaId);
+                    if (materiaProgress.total > 0) {
+                        progressGrid.appendChild(createMateriaProgressCard(materiaProgress, true));
+                    }
+                });
+            } 
+            // Se tiver matérias selecionadas, mostrar apenas elas
+            else if (selectedMateriasForProgress.length > 0) {
+                selectedMateriasForProgress.forEach(materiaId => {
+                    const materiaProgress = calculateMateriaProgress(materiaId);
+                    if (materiaProgress.total > 0) {
+                        progressGrid.appendChild(createMateriaProgressCard(materiaProgress, true));
+                    }
+                });
+            }
+            // Senão, mostrar todas as matérias
+            else {
+                materiasDireito.forEach((materia, index) => {
+                    const materiaProgress = calculateMateriaProgress(materia.id);
+                    if (materiaProgress.total > 0) {
+                        progressGrid.appendChild(createMateriaProgressCard(materiaProgress, false));
+                    }
+                });
+            }
+        }
+
+        function createMateriaProgressCard(materiaProgress, isSelected) {
+            const materiaObj = materiasDireito.find(m => m.id === materiaProgress.id);
+            const index = materiasDireito.findIndex(m => m.id === materiaProgress.id);
+            
+            const progressCard = document.createElement('div');
+            progressCard.className = `materia-progress materia-progress-${(index % 7) + 1} ${isSelected ? 'selected' : ''}`;
+            progressCard.onclick = () => toggleMateriaForProgress(materiaProgress.id);
+            progressCard.innerHTML = `
+                <div class="materia-header">
+                    <div class="materia-name">
+                        ${isSelected ? '<i class="fas fa-check-circle"></i>' : '<i class="far fa-circle"></i>'}
+                        ${materiaObj.name}
+                    </div>
+                    <div class="materia-count">${materiaProgress.completed}/${materiaProgress.total}</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${materiaProgress.percentage}%"></div>
+                </div>
+                <div class="progress-info">
+                    <span>${materiaProgress.percentage}% concluído</span>
+                    <span>${materiaProgress.total} casos</span>
+                </div>
+            `;
+            return progressCard;
+        }
+
+        function calculateMateriaProgress(materiaId) {
+            const casesInMateria = activeStudyFilter 
+                ? getFilteredCases().filter(c => c.materia === materiaId)
+                : casesData.filter(c => c.materia === materiaId);
+            
+            const completedCases = casesInMateria.filter(c => 
+                getCaseStatus(c.id) === 'completed'
+            ).length;
+            
+            return {
+                id: materiaId,
+                name: materiasDireito.find(m => m.id === materiaId)?.name || materiaId,
+                total: casesInMateria.length,
+                completed: completedCases,
+                percentage: casesInMateria.length > 0 ? 
+                    Math.round((completedCases / casesInMateria.length) * 100) : 0
+            };
+        }
+
+        // 3. AVALIAÇÃO SIMPLES DE CASOS (BOA/RUIM)
+        function rateCase(caseId, isGood) {
+            const caseItem = casesData.find(c => c.id === caseId);
+            if (!caseItem) return;
+            
+            if (!caseItem.rating) {
+                caseItem.rating = { good: 0, bad: 0, userRating: null };
+            }
+            
+            const currentUserRating = caseItem.rating.userRating;
+            
+            // Remover avaliação anterior se existir
+            if (currentUserRating === 'good') {
+                caseItem.rating.good--;
+            } else if (currentUserRating === 'bad') {
+                caseItem.rating.bad--;
+            }
+            
+            // Adicionar nova avaliação
+            if (isGood) {
+                caseItem.rating.good++;
+                caseItem.rating.userRating = 'good';
+            } else {
+                caseItem.rating.bad++;
+                caseItem.rating.userRating = 'bad';
+            }
+            
+            saveUserData();
+            updateCaseRatingUI(caseId);
+            showToast(`Avaliação ${isGood ? 'boa' : 'ruim'} registrada!`, 'success');
+        }
+
+        function updateCaseRatingUI(caseId) {
+            const caseItem = casesData.find(c => c.id === caseId);
+            if (!caseItem || !caseItem.rating) return;
+            
+            const total = caseItem.rating.good + caseItem.rating.bad;
+            const percentage = total > 0 ? Math.round((caseItem.rating.good / total) * 100) : 0;
+            const userRating = caseItem.rating.userRating;
+            
+            // Atualizar botões de avaliação
+            const goodBtn = document.getElementById(`rate-good-${caseId}`);
+            const badBtn = document.getElementById(`rate-bad-${caseId}`);
+            
+            if (goodBtn) {
+                goodBtn.className = `rating-btn rating-btn-good ${userRating === 'good' ? 'active' : ''}`;
+            }
+            
+            if (badBtn) {
+                badBtn.className = `rating-btn rating-btn-bad ${userRating === 'bad' ? 'active' : ''}`;
+            }
+            
+            // Atualizar contagem
+            const countElement = document.getElementById(`rating-count-${caseId}`);
+            if (countElement) {
+                countElement.textContent = `${total} avaliações`;
+            }
+            
+            // Atualizar porcentagem
+            const percentageElement = document.getElementById(`rating-percentage-${caseId}`);
+            if (percentageElement) {
+                percentageElement.textContent = `${percentage}%`;
+            }
+            
+            // Atualizar botão de curtir no header
+            const likeBtn = document.getElementById(`like-case-btn-${caseId}`);
+            if (likeBtn) {
+                const likeCount = caseItem.rating.good;
+                likeBtn.innerHTML = `<i class="fas fa-thumbs-up"></i> ${likeCount}`;
+            }
+        }
+
+        // 4. AVALIAÇÃO DE COMENTÁRIOS (ÚTIL/NÃO ÚTIL)
+        function rateComment(caseId, commentId, isUseful) {
+            if (!userComments[caseId]) return;
+            
+            const comment = userComments[caseId].find(c => c.id === commentId);
+            if (!comment) return;
+            
+            if (!comment.ratings) {
+                comment.ratings = { useful: 0, notUseful: 0, userRating: null };
+            }
+            
+            const currentUserRating = comment.ratings.userRating;
+            
+            // Remover avaliação anterior
+            if (currentUserRating === 'useful') {
+                comment.ratings.useful--;
+            } else if (currentUserRating === 'notUseful') {
+                comment.ratings.notUseful--;
+            }
+            
+            // Adicionar nova avaliação
+            if (isUseful) {
+                comment.ratings.useful++;
+                comment.ratings.userRating = 'useful';
+            } else {
+                comment.ratings.notUseful++;
+                comment.ratings.userRating = 'notUseful';
+            }
+            
+            saveUserData();
+            updateCommentRatingUI(caseId, commentId);
+        }
+
+        function updateCommentRatingUI(caseId, commentId) {
+            const comment = userComments[caseId]?.find(c => c.id === commentId);
+            if (!comment || !comment.ratings) return;
+            
+            const usefulBtn = document.getElementById(`comment-useful-${commentId}`);
+            const notUsefulBtn = document.getElementById(`comment-not-useful-${commentId}`);
+            const usefulCount = document.getElementById(`comment-useful-count-${commentId}`);
+            const notUsefulCount = document.getElementById(`comment-not-useful-count-${commentId}`);
+            
+            if (usefulBtn) {
+                usefulBtn.className = `comment-rating-btn comment-rating-btn-good ${comment.ratings.userRating === 'useful' ? 'active' : ''}`;
+            }
+            
+            if (notUsefulBtn) {
+                notUsefulBtn.className = `comment-rating-btn comment-rating-btn-bad ${comment.ratings.userRating === 'notUseful' ? 'active' : ''}`;
+            }
+            
+            if (usefulCount) {
+                usefulCount.textContent = comment.ratings.useful;
+            }
+            
+            if (notUsefulCount) {
+                notUsefulCount.textContent = comment.ratings.notUseful;
+            }
+        }
+
+        // 5. PAGINAÇÃO DE COMENTÁRIOS
+        function toggleComments() {
+            commentsExpanded = !commentsExpanded;
+            const commentsContent = document.getElementById('comments-content');
+            const toggleIcon = document.querySelector('.comments-toggle');
+            
+            if (commentsExpanded) {
+                commentsContent.classList.add('expanded');
+                toggleIcon.classList.add('rotated');
+                loadCommentsPage(1);
+            } else {
+                commentsContent.classList.remove('expanded');
+                toggleIcon.classList.remove('rotated');
+            }
+        }
+
+        function loadCommentsPage(page) {
+            currentCommentsPage = page;
+            const comments = getCaseComments(currentCaseId);
+            
+            // Ordenar comentários por avaliação (útil - não útil)
+            const sortedComments = [...comments].sort((a, b) => {
+                const aScore = (a.ratings?.useful || 0) - (a.ratings?.notUseful || 0);
+                const bScore = (b.ratings?.useful || 0) - (b.ratings?.notUseful || 0);
+                return bScore - aScore;
+            });
+            
+            const startIndex = (page - 1) * COMMENTS_PER_PAGE;
+            const endIndex = startIndex + COMMENTS_PER_PAGE;
+            const pageComments = sortedComments.slice(startIndex, endIndex);
+            
+            const totalPages = Math.ceil(sortedComments.length / COMMENTS_PER_PAGE);
+            
+            const commentsList = document.getElementById('comments-list');
+            if (!commentsList) return;
+            
+            commentsList.innerHTML = '';
+            
+            if (pageComments.length === 0) {
+                commentsList.innerHTML = '<p style="color: #7f8c8d; text-align: center;">Nenhum comentário ainda. Seja o primeiro a comentar!</p>';
+            } else {
+                pageComments.forEach(comment => {
+                    const commentElement = document.createElement('div');
+                    commentElement.className = 'comment';
+                    commentElement.innerHTML = `
+                        <div class="comment-header">
+                            <div class="comment-author">${comment.author}</div>
+                            <div class="comment-date">${formatDate(comment.date)}</div>
+                        </div>
+                        <div class="comment-content">${comment.content}</div>
+                        <div class="comment-rating">
+                            <div class="comment-rating-buttons">
+                                <button class="comment-rating-btn comment-rating-btn-good ${comment.ratings?.userRating === 'useful' ? 'active' : ''}" 
+                                        onclick="rateComment(${currentCaseId}, ${comment.id}, true)" id="comment-useful-${comment.id}">
+                                    <i class="fas fa-thumbs-up"></i>
+                                    <span id="comment-useful-count-${comment.id}">${comment.ratings?.useful || 0}</span>
+                                </button>
+                                <button class="comment-rating-btn comment-rating-btn-bad ${comment.ratings?.userRating === 'notUseful' ? 'active' : ''}" 
+                                        onclick="rateComment(${currentCaseId}, ${comment.id}, false)" id="comment-not-useful-${comment.id}">
+                                    <i class="fas fa-thumbs-down"></i>
+                                    <span id="comment-not-useful-count-${comment.id}">${comment.ratings?.notUseful || 0}</span>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    commentsList.appendChild(commentElement);
+                });
+            }
+            
+            // Atualizar paginação
+            updateCommentsPagination(totalPages, page);
+        }
+
+        function updateCommentsPagination(totalPages, currentPage) {
+            const paginationContainer = document.getElementById('comments-pagination');
+            if (!paginationContainer || totalPages <= 1) {
+                if (paginationContainer) {
+                    paginationContainer.innerHTML = '';
+                }
+                return;
+            }
+            
+            let paginationHTML = '';
+            
+            // Botão anterior
+            paginationHTML += `
+                <button class="pagination-btn" onclick="loadCommentsPage(${currentPage - 1})" 
+                        ${currentPage === 1 ? 'disabled' : ''}>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            `;
+            
+            // Números das páginas
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+            
+            if (endPage - startPage + 1 < maxVisiblePages) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                paginationHTML += `
+                    <button class="pagination-btn ${i === currentPage ? 'active' : ''}" 
+                            onclick="loadCommentsPage(${i})">
+                        ${i}
+                    </button>
+                `;
+            }
+            
+            // Botão próximo
+            paginationHTML += `
+                <button class="pagination-btn" onclick="loadCommentsPage(${currentPage + 1})" 
+                        ${currentPage === totalPages ? 'disabled' : ''}>
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            `;
+            
+            paginationContainer.innerHTML = paginationHTML;
+        }
+
+        // MODO DE ESTUDO COM FILTRO SALVO
+        function startStudyWithFilter(filter) {
+            activeStudyFilter = filter;
+            saveUserData();
+            
+            currentFilters = { ...filter.filters };
+            
+            document.getElementById('materia-filter').value = currentFilters.materia || 'all';
+            document.getElementById('status-filter').value = currentFilters.status || 'all';
+            document.getElementById('sort-filter').value = currentFilters.sort || 'default';
+            document.getElementById('global-search').value = currentFilters.search || '';
+            
+            updateTopicsByMateria();
+            if (currentFilters.topic) {
+                document.getElementById('topic-filter').value = currentFilters.topic;
+            }
+            
+            document.getElementById('study-mode-info').classList.remove('hidden');
+            
+            loadCases();
+            updateDashboardStats();
+            
+            showToast(`Modo de estudo ativado: "${filter.name}"`, 'success');
+        }
+
+        function exitStudyMode() {
+            activeStudyFilter = null;
+            saveUserData();
+            
+            document.getElementById('study-mode-info').classList.add('hidden');
+            loadCases();
+            updateDashboardStats();
+            
+            showToast('Modo de estudo desativado', 'info');
+        }
+
+        function getFilteredCases() {
+            let filteredCases = casesData;
+            
+            if (activeStudyFilter) {
+                const filter = activeStudyFilter.filters;
+                
+                if (filter.materia && filter.materia !== 'all') {
+                    filteredCases = filteredCases.filter(c => c.materia === filter.materia);
+                }
+                
+                if (filter.topic && filter.topic !== 'all') {
+                    filteredCases = filteredCases.filter(c => c.topic === filter.topic);
+                }
+                
+                if (filter.status && filter.status !== 'all') {
+                    filteredCases = filteredCases.filter(c => getCaseStatus(c.id) === filter.status);
+                }
+                
+                if (filter.search) {
+                    const searchLower = filter.search.toLowerCase();
+                    filteredCases = filteredCases.filter(caseItem => {
+                        const searchableText = `
+                            ${caseItem.title || ''} 
+                            ${caseItem.topic || ''} 
+                            ${caseItem.code || ''} 
+                            ${caseItem.context || ''}
+                            ${caseItem.materiaName || ''}
+                        `.toLowerCase();
+                        return searchableText.includes(searchLower);
+                    });
+                }
+            }
+            
+            return filteredCases;
+        }
+
+        function calculateProgress() {
+            const casesToCalculate = activeStudyFilter ? getFilteredCases() : casesData;
+            const total = casesToCalculate.length;
+            const completed = casesToCalculate.filter(caseItem => 
+                getCaseStatus(caseItem.id) === 'completed'
+            ).length;
+            
+            const totalTime = Object.values(userProgress).reduce((sum, progress) => 
+                sum + (progress.timeSpent || 0), 0);
+            
+            // Calcular média de avaliações
+            let totalGood = 0;
+            let totalRatings = 0;
+            casesToCalculate.forEach(caseItem => {
+                if (caseItem.rating) {
+                    totalGood += caseItem.rating.good || 0;
+                    totalRatings += (caseItem.rating.good || 0) + (caseItem.rating.bad || 0);
+                }
+            });
+            const avgRating = totalRatings > 0 ? ((totalGood / totalRatings) * 100).toFixed(0) : '0';
+            
+            return {
+                total,
+                completed,
+                percentage: total > 0 ? Math.round((completed / total) * 100) : 0,
+                totalTime,
+                hours: Math.floor(totalTime / 60),
+                minutes: totalTime % 60,
+                avgRating
+            };
+        }
+
+        function calculateFilteredProgress() {
+            const filteredCases = getFilteredCases();
+            const total = filteredCases.length;
+            const completed = filteredCases.filter(caseItem => 
+                getCaseStatus(caseItem.id) === 'completed'
+            ).length;
+            
+            return {
+                total,
+                completed,
+                percentage: total > 0 ? Math.round((completed / total) * 100) : 0
+            };
+        }
+
+        function getMateriasFromFilter(filter) {
+            const filteredCases = casesData.filter(caseItem => {
+                const f = filter.filters || filter;
+                
+                if (f.materia && f.materia !== 'all' && caseItem.materia !== f.materia) {
+                    return false;
+                }
+                
+                if (f.topic && f.topic !== 'all' && caseItem.topic !== f.topic) {
+                    return false;
+                }
+                
+                if (f.status && f.status !== 'all' && getCaseStatus(caseItem.id) !== f.status) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            const materias = [...new Set(filteredCases.map(c => c.materia))];
+            return materias;
+        }
+
+        // FUNÇÕES DE FILTRO
+        function saveCurrentFilter() {
+            const filterName = prompt('Digite um nome para salvar este filtro (bloco de estudo):');
+            if (!filterName) return;
+            
+            const newFilter = {
+                id: Date.now(),
+                name: filterName,
+                filters: { ...currentFilters },
+                createdAt: new Date().toISOString(),
+                isStudyBlock: true
+            };
+            
+            savedFilters.push(newFilter);
+            saveUserData();
+            loadSavedFilters();
+            showToast(`Filtro "${filterName}" salvo como bloco de estudo!`, 'success');
+        }
+
+        function loadSavedFilters() {
+            const container = document.getElementById('saved-filter-tags');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            savedFilters.forEach(filter => {
+                const tag = document.createElement('div');
+                tag.className = `saved-filter-tag ${activeStudyFilter?.id === filter.id ? 'active' : ''}`;
+                tag.innerHTML = `
+                    <i class="fas fa-filter"></i>
+                    ${filter.name}
+                    <button class="filter-study-btn" onclick="event.stopPropagation(); startStudyWithFilter(${JSON.stringify(filter)})">
+                        <i class="fas fa-graduation-cap"></i> Estudar
+                    </button>
+                    <i class="fas fa-times" onclick="event.stopPropagation(); deleteSavedFilter(${filter.id})" 
+                       style="margin-left: 5px; color: #95a5a6; font-size: 12px;"></i>
+                `;
+                tag.onclick = () => applySavedFilter(filter);
+                container.appendChild(tag);
+            });
+            
+            // Mostrar/ocultar seção
+            const section = document.getElementById('saved-filters-section');
+            if (savedFilters.length > 0) {
+                section.classList.remove('hidden');
+            } else {
+                section.classList.add('hidden');
+            }
+        }
+
+        function applySavedFilter(filter) {
+            currentFilters = { ...filter.filters };
+            
+            document.getElementById('materia-filter').value = currentFilters.materia || 'all';
+            document.getElementById('status-filter').value = currentFilters.status || 'all';
+            document.getElementById('sort-filter').value = currentFilters.sort || 'default';
+            document.getElementById('global-search').value = currentFilters.search || '';
+            
+            updateTopicsByMateria();
+            if (currentFilters.topic) {
+                document.getElementById('topic-filter').value = currentFilters.topic;
+            }
+            
+            loadCases();
+            showToast(`Filtro "${filter.name}" aplicado!`, 'success');
+        }
+
+        function deleteSavedFilter(filterId) {
+            savedFilters = savedFilters.filter(f => f.id !== filterId);
+            saveUserData();
+            loadSavedFilters();
+            
+            if (activeStudyFilter && activeStudyFilter.id === filterId) {
+                exitStudyMode();
+            }
+            
+            showToast('Filtro removido!', 'info');
+        }
+
+        function applyFilters() {
+            currentFilters = {
+                materia: document.getElementById('materia-filter').value,
+                topic: document.getElementById('topic-filter').value,
+                status: document.getElementById('status-filter').value,
+                sort: document.getElementById('sort-filter').value,
+                search: document.getElementById('global-search').value.toLowerCase()
+            };
+            
+            loadCases();
+            showToast('Filtros aplicados!', 'success');
+        }
+
+        function resetFilters() {
+            document.getElementById('materia-filter').value = 'all';
+            document.getElementById('topic-filter').value = 'all';
+            document.getElementById('status-filter').value = 'all';
+            document.getElementById('sort-filter').value = 'default';
+            document.getElementById('global-search').value = '';
+            
+            currentFilters = {
+                materia: 'all',
+                topic: 'all',
+                status: 'all',
+                sort: 'default',
+                search: ''
+            };
+            
+            updateTopicsByMateria();
+            
+            loadCases();
+            showToast('Filtros resetados', 'info');
+        }
+
+        function performSearch() {
+            applyFilters();
+        }
+
+        // FUNÇÕES DE PROGRESSO
+        function updateCaseStatus(caseId, status) {
+            if (userProgress[caseId]) {
+                userProgress[caseId].status = status;
+                userProgress[caseId].lastViewed = new Date().toISOString();
+                
+                if (status === 'completed') {
+                    userProgress[caseId].completedAt = new Date().toISOString();
+                    userProgress[caseId].timeSpent += 30;
+                }
+                
+                saveUserData();
+                updateDashboardStats();
+                return true;
+            }
+            return false;
+        }
+
+        function addStudyTime(caseId, minutes) {
+            if (userProgress[caseId]) {
+                userProgress[caseId].timeSpent = (userProgress[caseId].timeSpent || 0) + minutes;
+                saveUserData();
+                updateDashboardStats();
+            }
+        }
+
+        function getCaseStatus(caseId) {
+            return userProgress[caseId]?.status || 'not_started';
+        }
+
+        function getCaseComments(caseId) {
+            return userComments[caseId] || [];
+        }
+
+        function addComment(caseId, comment) {
+            if (!userComments[caseId]) {
+                userComments[caseId] = [];
+            }
+            
+            const newComment = {
+                id: Date.now(),
+                author: currentUser ? currentUser.name : 'Estudante',
+                content: comment,
+                date: new Date().toISOString(),
+                ratings: {
+                    useful: 0,
+                    notUseful: 0,
+                    userRating: null
+                }
+            };
+            
+            userComments[caseId].push(newComment);
+            saveUserData();
+            
+            // Recarregar comentários se a seção estiver expandida
+            if (commentsExpanded && currentCaseId === caseId) {
+                loadCommentsPage(currentCommentsPage);
+            }
+            
+            return newComment;
+        }
+
+        // FUNÇÕES DE UI
+        async function startStudy() {
+            showLoading('Iniciando estudos...');
+            
+            const loaded = await loadCasesData();
+            if (!loaded) {
+                hideLoading();
+                return;
+            }
+            
+            loadUserData();
+            
+            if (!currentUser) {
+                currentUser = { 
+                    id: 'demo_user',
+                    name: "Estudante", 
+                    email: "estudante@Jurisfix.com",
+                    avatar: "E"
+                };
+                saveUserData();
+            }
+            
+            hideAllPages();
+            document.getElementById('dashboard').classList.remove('hidden');
+            document.getElementById('auth-buttons').classList.add('hidden');
+            document.getElementById('user-info').classList.remove('hidden');
+            
+            document.getElementById('user-name').textContent = currentUser.name;
+            document.getElementById('user-avatar').textContent = currentUser.avatar;
+            
+            initializeDashboard();
+            updateDashboardStats();
+            
+            showToast(`${casesData.length} casos carregados com sucesso!`, 'success');
+        }
+
+        function showCaseDetail(caseId) {
+            const caseItem = casesData.find(c => c.id === caseId);
+            if (!caseItem) {
+                showToast('Caso não encontrado', 'error');
+                return;
+            }
+            
+            currentCaseId = caseId;
+            commentsExpanded = false;
+            currentCommentsPage = 1;
+            
+            if (getCaseStatus(caseId) === 'not_started') {
+                updateCaseStatus(caseId, 'in_progress');
+            }
+            
+            addStudyTime(caseId, 5);
+            
+            hideAllPages();
+            document.getElementById('case-detail').classList.remove('hidden');
+            
+            const contentDiv = document.getElementById('case-detail-content');
+            const currentStatus = getCaseStatus(caseId);
+            const rating = caseItem.rating || { good: 0, bad: 0, userRating: null };
+            const totalRatings = rating.good + rating.bad;
+            const percentage = totalRatings > 0 ? Math.round((rating.good / totalRatings) * 100) : 0;
+            
+            // Encontrar próximo caso dentro do filtro atual
+            const filteredCases = getFilteredCases();
+            const currentIndex = filteredCases.findIndex(c => c.id === caseId);
+            const prevCase = currentIndex > 0 ? filteredCases[currentIndex - 1] : null;
+            const nextCase = currentIndex < filteredCases.length - 1 ? filteredCases[currentIndex + 1] : null;
+            
+            contentDiv.innerHTML = `
+                <button class="btn btn-secondary" onclick="showDashboardPage()" style="margin-bottom: 20px;">
+                    <i class="fas fa-arrow-left"></i> Voltar para lista
+                </button>
+                
+                <div class="case-detail-container">
+                    <div class="case-detail-header">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div style="flex: 1;">
+                                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                                    <div class="case-code">${caseItem.code || ''}</div>
+                                    <span class="case-materia" style="background: rgba(255,255,255,0.2);">${caseItem.materiaName || 'Direito'}</span>
+                                </div>
+                                <h1>${caseItem.title || 'Sem título'}</h1>
+                                <div class="case-detail-meta">
+                                    <span><i class="fas fa-tag"></i> ${caseItem.topic || 'Sem tópico'}</span>
+                                    <span><i class="fas fa-signal"></i> Nível ${caseItem.level || 'N/A'}</span>
+                                    <span class="case-status ${getStatusClass(currentStatus)}">${getStatusText(currentStatus)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="case-detail-content">
+                        <div class="case-section">
+                            <h3><i class="fas fa-book-open"></i> Contexto</h3>
+                            <div class="case-section-content">
+                                ${formatMarkdown(caseItem.narrativeMd || caseItem.context || 'Sem narrativa disponível.')}
+                            </div>
+                        </div>
+                        
+                        ${caseItem.conflict ? `
+                        <div class="case-section">
+                            <h3><i class="fas fa-crosshairs"></i> Conflito Central</h3>
+                            <div class="case-section-content">
+                                ${caseItem.conflict}
+                            </div>
+                        </div>` : ''}
+                        
+                        ${caseItem.explanationMd ? `
+                        <div class="case-section">
+                            <h3><i class="fas fa-graduation-cap"></i> Explicação Doutrinária</h3>
+                            <div class="case-section-content">
+                                ${formatMarkdown(caseItem.explanationMd)}
+                            </div>
+                        </div>` : ''}
+                        
+                        ${caseItem.applicationMd ? `
+                        <div class="case-section">
+                            <h3><i class="fas fa-hammer"></i> Aplicação Prática</h3>
+                            <div class="case-section-content">
+                                ${formatMarkdown(caseItem.applicationMd)}
+                            </div>
+                        </div>` : ''}
+                        
+                        ${caseItem.keyIdea ? `
+                        <div class="case-section">
+                            <h3><i class="fas fa-lightbulb"></i> Ideia Central</h3>
+                            <div class="case-section-content" style="background: #e3f2fd; border-left-color: #2196f3;">
+                                ${caseItem.keyIdea}
+                            </div>
+                        </div>` : ''}
+                        
+                        ${caseItem.proofTip ? `
+                        <div class="case-section">
+                            <h3><i class="fas fa-clipboard-check"></i> Dica para Provas</h3>
+                            <div class="case-section-content" style="background: #fff3e0; border-left-color: #ff9800;">
+                                ${caseItem.proofTip}
+                            </div>
+                        </div>` : ''}
+                        
+                        ${caseItem.mnemonics && caseItem.mnemonics.length > 0 ? `
+                        <div class="case-section">
+                            <h3><i class="fas fa-brain"></i> Mnemônicos</h3>
+                            <div class="case-section-content" style="background: #f3e5f5; border-left-color: #9c27b0;">
+                                <ul>
+                                    ${caseItem.mnemonics.map(m => `<li>${m}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>` : ''}
+                        
+                        <!-- AVALIAÇÃO DO CASO -->
+                        <div class="rating-section">
+                            <h3><i class="fas fa-star"></i> Avalie este Caso</h3>
+                            
+                            <div class="case-rating-stats">
+                                <div class="rating-overall">
+                                    <div class="rating-percentage" id="rating-percentage-${caseItem.id}">${percentage}%</div>
+                                    <div class="rating-label">dos usuários acham bom</div>
+                                    <div class="rating-count" id="rating-count-${caseItem.id}">${totalRatings} avaliações</div>
+                                </div>
+                                
+                                <div class="rating-buttons">
+                                    <button class="rating-btn rating-btn-good ${rating.userRating === 'good' ? 'active' : ''}" 
+                                            onclick="rateCase(${caseItem.id}, true)" id="rate-good-${caseItem.id}">
+                                        <i class="fas fa-thumbs-up"></i> Bom
+                                    </button>
+                                    <button class="rating-btn rating-btn-bad ${rating.userRating === 'bad' ? 'active' : ''}" 
+                                            onclick="rateCase(${caseItem.id}, false)" id="rate-bad-${caseItem.id}">
+                                        <i class="fas fa-thumbs-down"></i> Ruim
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- COMENTÁRIOS (MENU ESCONDIDO) -->
+                        <div class="comments-collapsible">
+                            <div class="comments-header" onclick="toggleComments()">
+                                <h3><i class="fas fa-comments"></i> Comentários</h3>
+                                <div class="comments-toggle">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="comments-content" id="comments-content">
+                                <div class="comment-form">
+                                    <textarea class="comment-input" id="new-comment" placeholder="Deixe seu comentário sobre este caso..."></textarea>
+                                    <div style="display: flex; justify-content: flex-end;">
+                                        <button class="btn btn-primary" onclick="submitComment(${caseItem.id})">
+                                            <i class="fas fa-paper-plane"></i> Enviar Comentário
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="comments-list" id="comments-list">
+                                    <!-- Comentários serão carregados aqui -->
+                                </div>
+                                
+                                <div class="comments-pagination" id="comments-pagination">
+                                    <!-- Paginação será carregada aqui -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- NAVEGAÇÃO (dentro do filtro) -->
+                        <div class="case-navigation">
+                            <div>
+                                ${prevCase ? `
+                                <button class="btn btn-secondary" onclick="showCaseDetail(${prevCase.id})">
+                                    <i class="fas fa-arrow-left"></i> Anterior
+                                </button>` : ''}
+                            </div>
+                            
+                            <div class="nav-info">
+                                ${activeStudyFilter ? 'Modo de estudo: ' : ''}Caso ${currentIndex + 1} de ${filteredCases.length}
+                            </div>
+                            
+                            <div style="display: flex; gap: 15px;">
+                                ${currentStatus !== 'completed' ? `
+                                <button class="btn btn-success" onclick="markCaseAsCompleted(${caseItem.id})">
+                                    <i class="fas fa-check"></i> Concluir Caso
+                                </button>` : `
+                                <button class="btn btn-secondary" style="background: #27ae60; color: white;">
+                                    <i class="fas fa-check-double"></i> Concluído
+                                </button>`}
+                                
+                                ${nextCase ? `
+                                <button class="btn btn-primary" onclick="showCaseDetail(${nextCase.id})">
+                                    Próximo <i class="fas fa-arrow-right"></i>
+                                </button>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            window.scrollTo(0, 0);
+        }
+
+        function submitComment(caseId) {
+            const commentInput = document.getElementById('new-comment');
+            const commentText = commentInput.value.trim();
+            
+            if (!commentText) {
+                showToast('Digite um comentário antes de enviar.', 'warning');
+                return;
+            }
+            
+            const newComment = addComment(caseId, commentText);
+            
+            // Atualizar a lista de comentários
+            loadCommentsPage(currentCommentsPage);
+            
+            commentInput.value = '';
+            
+            showToast('Comentário enviado com sucesso!', 'success');
+        }
+
+        function markCaseAsCompleted(caseId) {
+            if (updateCaseStatus(caseId, 'completed')) {
+                showToast('Caso marcado como concluído!', 'success');
+                
+                setTimeout(() => {
+                    const btn = document.querySelector(`button[onclick="markCaseAsCompleted(${caseId})"]`);
+                    if (btn) {
+                        btn.outerHTML = `
+                            <button class="btn btn-secondary" style="background: #27ae60; color: white;">
+                                <i class="fas fa-check-double"></i> Concluído
+                            </button>
+                        `;
+                    }
+                }, 500);
+            }
+        }
+
+        function initializeDashboard() {
+            // Popular filtro de matérias
+            const materiaFilter = document.getElementById('materia-filter');
+            materiaFilter.innerHTML = '<option value="all">Todas as matérias</option>';
+            
+            materiasDireito.forEach(materia => {
+                const option = document.createElement('option');
+                option.value = materia.id;
+                option.textContent = materia.name;
+                materiaFilter.appendChild(option);
+            });
+            
+            // Atualizar tópicos inicialmente
+            updateTopicsByMateria();
+            
+            // Carregar filtros salvos
+            loadSavedFilters();
+            
+            // Mostrar/ocultar modo de estudo
+            if (activeStudyFilter) {
+                document.getElementById('study-mode-info').classList.remove('hidden');
+            }
+            
+            // Carregar casos
+            loadCases();
+        }
+
+        function loadCases() {
+            const container = document.getElementById('cases-grid');
+            const countSpan = document.getElementById('cases-count');
+            
+            if (!container) return;
+            
+            // Obter casos baseado no modo
+            let filteredCases = activeStudyFilter ? getFilteredCases() : casesData;
+            
+            // Aplicar filtros atuais
+            filteredCases = filteredCases.filter(caseItem => {
+                if (currentFilters.materia !== 'all' && caseItem.materia !== currentFilters.materia) {
+                    return false;
+                }
+                
+                if (currentFilters.topic !== 'all' && caseItem.topic !== currentFilters.topic) {
+                    return false;
+                }
+                
+                if (currentFilters.status !== 'all' && getCaseStatus(caseItem.id) !== currentFilters.status) {
+                    return false;
+                }
+                
+                if (currentFilters.search) {
+                    const searchLower = currentFilters.search.toLowerCase();
+                    const searchableText = `
+                        ${caseItem.title || ''} 
+                        ${caseItem.topic || ''} 
+                        ${caseItem.code || ''} 
+                        ${caseItem.context || ''}
+                        ${caseItem.materiaName || ''}
+                    `.toLowerCase();
+                    
+                    if (!searchableText.includes(searchLower)) {
+                        return false;
+                    }
+                }
+                
+                return true;
+            });
+            
+            // Ordenar
+            if (currentFilters.sort === 'rating') {
+                filteredCases.sort((a, b) => {
+                    const aRating = a.rating ? (a.rating.good / (a.rating.good + a.rating.bad)) : 0;
+                    const bRating = b.rating ? (b.rating.good / (b.rating.good + b.rating.bad)) : 0;
+                    return bRating - aRating;
+                });
+            } else if (currentFilters.sort === 'difficulty') {
+                filteredCases.sort((a, b) => (b.level || 1) - (a.level || 1));
+            } else if (currentFilters.sort === 'recent') {
+                filteredCases.sort((a, b) => b.id - a.id);
+            }
+            
+            // Atualizar contador
+            countSpan.textContent = filteredCases.length;
+            
+            // Limpar container
+            container.innerHTML = '';
+            
+            if (filteredCases.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-search"></i>
+                        <h3>Nenhum caso encontrado</h3>
+                        <p>Tente ajustar os filtros ou busca para ver mais resultados.</p>
+                        <button class="btn btn-primary" onclick="resetFilters()" style="margin-top: 20px;">
+                            <i class="fas fa-redo"></i> Limpar Filtros
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Renderizar casos
+            filteredCases.forEach(caseItem => {
+                const status = getCaseStatus(caseItem.id);
+                const statusClass = getStatusClass(status);
+                const statusText = getStatusText(status);
+                const rating = caseItem.rating || { good: 0, bad: 0 };
+                const totalRatings = rating.good + rating.bad;
+                const percentage = totalRatings > 0 ? Math.round((rating.good / totalRatings) * 100) : 0;
+                const materiaObj = materiasDireito.find(m => m.id === caseItem.materia) || materiasDireito[0];
+                
+                const caseCard = document.createElement('div');
+                caseCard.className = 'case-card';
+                caseCard.onclick = () => showCaseDetail(caseItem.id);
+                
+                caseCard.innerHTML = `
+                    <div class="case-header">
+                        <div class="case-code">${caseItem.code || 'CASE'}</div>
+                        <div class="case-title">${caseItem.title || 'Sem título'}</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="case-materia" style="background: ${materiaObj.color}22; color: ${materiaObj.color}; border: 1px solid ${materiaObj.color}44;">
+                                ${materiaObj.name}
+                            </span>
+                            <div style="color: #28a745; font-size: 14px;">
+                                <i class="fas fa-thumbs-up"></i> ${percentage}%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <div class="case-topic">
+                            <i class="fas fa-tag"></i> ${caseItem.topic || 'Sem tópico'}
+                        </div>
+                        <div class="case-context">${caseItem.context || 'Sem contexto'}</div>
+                        <div class="case-meta">
+                            <span class="case-status ${statusClass}">${statusText}</span>
+                            <div class="case-actions">
+                                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); showCaseDetail(${caseItem.id})">
+                                    <i class="fas fa-play"></i> Estudar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(caseCard);
+            });
+        }
+
+        function getStatusClass(status) {
+            switch(status) {
+                case 'completed': return 'status-completed';
+                case 'in_progress': return 'status-in-progress';
+                default: return 'status-not-started';
+            }
+        }
+
+        function getStatusText(status) {
+            switch(status) {
+                case 'completed': return 'Concluído';
+                case 'in_progress': return 'Em progresso';
+                default: return 'Não iniciado';
+            }
+        }
+
+        function formatMarkdown(text) {
+            if (!text) return '<p>Sem conteúdo disponível.</p>';
+            
+            text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            
+            text = text.replace(/^### (.*$)/gm, '<h4>$1</h4>');
+            text = text.replace(/^## (.*$)/gm, '<h3>$1</h3>');
+            text = text.replace(/^# (.*$)/gm, '<h2>$1</h2>');
+            
+            const lines = text.split('\n');
+            let html = '';
+            let inList = false;
+            
+            for (let line of lines) {
+                if (line.match(/^[-*] /)) {
+                    if (!inList) {
+                        html += '<ul>';
+                        inList = true;
+                    }
+                    html += `<li>${line.substring(2)}</li>`;
+                } else if (line.match(/^\d+\. /)) {
+                    if (!inList) {
+                        html += '<ol>';
+                        inList = true;
+                    }
+                    html += `<li>${line.substring(line.indexOf('. ') + 2)}</li>`;
+                } else {
+                    if (inList) {
+                        html += inList ? '</ul></ol>' : '';
+                        inList = false;
+                    }
+                    if (line.trim()) {
+                        html += `<p>${line}</p>`;
+                    }
+                }
+            }
+            
+            if (inList) {
+                html += inList ? '</ul></ol>' : '';
+            }
+            
+            return html || `<p>${text}</p>`;
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // FUNÇÕES AUXILIARES
+        function logout() {
+            currentUser = null;
+            showWelcomePage();
+            showToast('Logout realizado', 'info');
+        }
+
+        function showDashboardPage() {
+            hideAllPages();
+            document.getElementById('dashboard').classList.remove('hidden');
+            loadCases();
+            updateDashboardStats();
+        }
+
+        function showWelcomePage() {
+            hideAllPages();
+            document.getElementById('welcome-page').classList.remove('hidden');
+            document.getElementById('auth-buttons').classList.remove('hidden');
+            document.getElementById('user-info').classList.add('hidden');
+        }
+
+        function hideAllPages() {
+            ['welcome-page', 'dashboard', 'case-detail', 'loading'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+        }
+
+        function showLoading(message) {
+            document.getElementById('loading-message').textContent = message;
+            document.getElementById('loading').classList.remove('hidden');
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').classList.add('hidden');
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            const icon = toast.querySelector('i');
+            
+            toast.className = 'toast';
+            
+            if (type === 'error') {
+                toast.classList.add('error');
+                icon.className = 'fas fa-exclamation-circle';
+            } else if (type === 'warning') {
+                toast.classList.add('warning');
+                icon.className = 'fas fa-exclamation-triangle';
+            } else if (type === 'info') {
+                toast.classList.add('info');
+                icon.className = 'fas fa-info-circle';
+            } else {
+                icon.className = 'fas fa-check-circle';
+            }
+            
+            toastMessage.textContent = message;
+            toast.classList.remove('hidden');
+            
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        function mockRegister() {
+            showToast('Funcionalidade de cadastro completa! Use "Iniciar Estudos" para demo.', 'info');
+        }
+
+        function showLoginPage() {
+            showToast('Use "Iniciar Estudos" para acessar a versão demo completa.', 'info');
+        }
+
+        // INICIALIZAÇÃO
+        function initApp() {
+            showWelcomePage();
+            
+            document.getElementById('global-search').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        }
+
+        // EXPORTAR FUNÇÕES GLOBAIS
+        window.showWelcomePage = showWelcomePage;
+        window.startStudy = startStudy;
+        window.logout = logout;
+        window.showDashboardPage = showDashboardPage;
+        window.showCaseDetail = showCaseDetail;
+        window.markCaseAsCompleted = markCaseAsCompleted;
+        window.applyFilters = applyFilters;
+        window.resetFilters = resetFilters;
+        window.performSearch = performSearch;
+        window.saveCurrentFilter = saveCurrentFilter;
+        window.applySavedFilter = applySavedFilter;
+        window.deleteSavedFilter = deleteSavedFilter;
+        window.startStudyWithFilter = startStudyWithFilter;
+        window.exitStudyMode = exitStudyMode;
+        window.rateCase = rateCase;
+        window.rateComment = rateComment;
+        window.submitComment = submitComment;
+        window.mockRegister = mockRegister;
+        window.showLoginPage = showLoginPage;
+        window.updateTopicsByMateria = updateTopicsByMateria;
+        window.toggleMateriaForProgress = toggleMateriaForProgress;
+        window.toggleComments = toggleComments;
+        window.loadCommentsPage = loadCommentsPage;
+
+        // INICIAR APLICAÇÃO
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
